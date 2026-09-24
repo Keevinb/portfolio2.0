@@ -1,69 +1,103 @@
 import Image from "next/image";
+import Link from "next/link";
+import ProjectSlideshow from "@/components/ProjectSlideshow";
+import TypingEffect from "@/components/TypingEffect";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
+const primaryButton =
+  "rounded-md bg-indigo-300 px-5 py-2 font-medium text-indigo-950 hover:bg-indigo-200";
+
+const iconButton =
+  "flex h-11 w-11 items-center justify-center text-indigo-100 transition-transform duration-200 hover:scale-125 hover:text-white";
+
+const contactTile =
+  "rounded-lg border border-indigo-800 px-4 py-4 transition-colors hover:border-indigo-400";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <>
+      <section className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl flex-col-reverse items-center justify-center gap-16 px-6 py-24 sm:flex-row sm:gap-24">
+        <div>
+          <h1 className="text-4xl font-bold">
+            <TypingEffect text="Hello, I'm Kevin" />
+          </h1>
+          <p className="mt-4 text-lg text-indigo-300">
+            A computer engineer originally from Olofström in southern Sweden,
+            currently living in Gothenburg, with an interest in embedded
+            systems, electronics, and software development. I enjoy building
+            things that make life easier and more enjoyable.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <a
+              href="https://github.com/keevinb"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className={iconButton}
+            >
+              <FaGithub className="h-5 w-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kevin-bondesson-923311234"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className={iconButton}
+            >
+              <FaLinkedin className="h-5 w-5" />
+            </a>
+          </div>
+        </div>
+
         <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/me.png"
+          alt="Photo of Kevin"
+          width={600}
+          height={600}
+          className="h-80 w-80 shrink-0 rounded-full object-cover sm:h-120 sm:w-120"
           priority
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+      </section>
+
+      <section
+        id="projects"
+        className="mx-auto max-w-3xl scroll-mt-20 px-6 py-24"
+      >
+        <h2 className="text-2xl font-bold">Projects</h2>
+        <p className="mb-6 mt-2 text-indigo-300">
+          Click an image to learn more about each project.
+        </p>
+        <ProjectSlideshow />
+      </section>
+
+      <section
+        id="contact"
+        className="mx-auto max-w-3xl scroll-mt-20 px-6 py-24"
+      >
+        <div className="rounded-2xl border border-indigo-800 bg-slate-800/40 p-8 text-center backdrop-blur sm:p-12">
+          <h2 className="text-3xl font-bold">Get in touch</h2>
+          <p className="mx-auto mt-4 max-w-xl text-lg text-indigo-300">
+            I'm open to new opportunities and always happy to talk about
+            projects. The easiest way to reach me is by email.
           </p>
+
+          <div className="mt-10 grid gap-3 sm:grid-cols-2">
+            <a
+              href="mailto:kevin-bondesson@hotmail.com"
+              className={contactTile}
+            >
+              <span className="block text-sm text-indigo-300">Email</span>
+              <span className="block break-all font-medium">
+                kevin-bondesson@hotmail.com
+              </span>
+            </a>
+            <a href="tel:+46768633474" className={contactTile}>
+              <span className="block text-sm text-indigo-300">Phone</span>
+              <span className="block font-medium">076 - 863 34 74</span>
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
